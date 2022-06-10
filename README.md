@@ -1,4 +1,4 @@
-# ConferenceScheduleOptimizer
+# Conference-Schedule-Optimizer
 This software uses a Quadratic Integer Programming (QIP) formulation to produce an optimal conference schedule given reviewers' bidding preferences.
 
 ## 1. Requirements
