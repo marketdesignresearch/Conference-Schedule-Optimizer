@@ -4,7 +4,7 @@ This software uses a Quadratic Integer Programming (QIP) formulation to produce 
 ## 1. Requirements
 
 * Python 3.8
-* CPLEX 20.01.0: 
+* CPLEX 20.01.0 
 
 ## 2. Installation Guide
 
