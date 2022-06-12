@@ -43,3 +43,12 @@ In the following, we describe the QIP.
 | T      | Paper-session Matrix T:** T(j,p)=1 iff paper p cannot be presented in session j | {(5,1): 1, (14,1):1, (7,2):1,...} |
 | Q      | Paper-topic Matrix Q:** Q(p,t)==1 iff paper p has topic t. | {(1,2): 1, (1,7):1, (26,4):1,...} |
 
+### 3.1 Decision Variables
+
+### 3.1.1 Bidder Variables:
+$y_{b,j,k} \in$ {0,1} $\forall (b,j,k) \in$ bidder_ids x track_ids x session_ids.
+Bidder $b$ attends session $j$ in track $k$ iff $y_{b,j,k}=1$.
+
+	
+
+
