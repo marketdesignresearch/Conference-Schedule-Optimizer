@@ -45,22 +45,22 @@ In the following, we describe the QIP.
 
 ### 3.2 Binary Decision Variables
 
-### 3.2.1 Paper Variables:
+### 3.2.1 Paper Variables
 **$x_{p,j,k} \in$ {0,1} $\forall (p,j,k) \in$ paper_ids $\times$ track_ids $\times$ session_ids.**
 
 The decision variable $x_{p,j,k}$ is used to model if a paper is allocated to a specific subsession (i.e. a session-track combination). Specifically, paper $p$ is allocated to session $j$ and track $k$ iff $x_{p,j,k}=1$. Note, that the final schedule is given by ${x_{p,j,k}: x_{p,j,k}=1 \forall p,j,k}$.
 
-### 3.2.2 Bidder Variables:
+### 3.2.2 Bidder Variables
 **$y_{b,j,k} \in$ {0,1} $\forall (b,j,k) \in$ bidder_ids $\times$ track_ids $\times$ session_ids.**
 
 The decision variable $y_{b,j,k}$ is used to model if a bidder attends a specific subsession (i.e. a session-track combination). Specifically, author $b$ attends session $j$ in track $k$ iff $y_{b,j,k}=1$. This decision variable is used  as an indication of audience interest, e.g., two papers with a high interest should not be presented simulatenously.
 
-### 3.2.3 Author Variables:
+### 3.2.3 Author Variables
 **$z_{a,j,k} \in$ {0,1} $\forall (a,j,k) \in$ author_ids $\times$ track_ids $\times$ session_ids.**
 
 The decision variable $z_{a,j,k}$ is used to model if a author presents her paper in a specific subsession (i.e. a session-track combination). Specifically, author $a$ presents her paper in session $j$ and track $k$ iff $z_{a,j,k}=1$. This decision variable is used to handle author-specific constraints, e.g., an author of 2 papers cannot present simulatenously both papers.
 
-### 3.2.4 Topic Variables:
+### 3.2.4 Topic Variables
 **$q_{a,j,k} \in$ {0,1} $\forall (t,j,k) \in$ topic_ids $\times$ track_ids $\times$ session_ids.**
 
 The decision variable $q_{t,j,k}$ is used to model if a topic is present in a specific subsession (i.e. a session-track combination). Specifically, topci $t$ is present in session $j$ and track $k$ iff $q_{t,j,k}=1$. This decision variable is used to cluster papers with similar topics.
