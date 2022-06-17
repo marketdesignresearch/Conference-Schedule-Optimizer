@@ -24,6 +24,7 @@ track_session_capacity = 4
 paper_distribution = 'exact' # 'exact' or 'upper_bound'
 bidder_cost = 5
 topic_cost = 25
+topic_utility = 100
 
 # U MAPPING: U(b,p)= scaled preference of bidder_id:b for paper_id:p
 U = pkl.load(open(os.path.join(save_data_path,'U.pkl'), 'rb'))
@@ -78,6 +79,7 @@ QIP_instance = QIP(session_ids=session_ids,
                    Q=Q,
                    bidder_cost = bidder_cost,
                    topic_cost = topic_cost,
+                   topic_utility = topic_utility,
                    QIP_parameters = QIP_parameters,
                    save_results=True,
                    savefolder='QIP_RESULTS')

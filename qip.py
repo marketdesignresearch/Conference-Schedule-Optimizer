@@ -45,6 +45,7 @@ class QIP:
                  QIP_parameters,
                  bidder_cost,
                  topic_cost,
+                 topic_utility,
                  save_results,
                  savefolder=None):
 
@@ -79,6 +80,7 @@ class QIP:
 
         self.bidder_cost = bidder_cost
         self.topic_cost = topic_cost
+        self.topic_utility = topic_utility
 
         self.allocation = OrderedDict()
         self.schedule = OrderedDict()
@@ -630,7 +632,7 @@ class QIP:
 
         objective2 = self.QIP.sum(self.bidder_cost*self.y[(b, j, k)] for b,j,k in self.objective2_ids)
 
-        objective3 = self.QIP.sum(self.x[(p, j, k)]*self.q[(t, j, k)]*self.topic_cost for p,j,k,t in self.objective3_ids)
+        objective3 = self.QIP.sum(self.x[(p, j, k)]*self.q[(t, j, k)]*self.topic_utility for p,j,k,t in self.objective3_ids)
 
         objective4 = self.QIP.sum(self.topic_cost*self.q[(t, j, k)] for t,j,k in self.objective4_ids)
 
