@@ -52,7 +52,7 @@ In the following, we describe the QIP.
 ### 3.2 Binary Decision Variables
 
 ### 3.2.1 Paper Variables
-**$x_{p,j,k} \in \\\{0,1\\\}\quad \forall (p,j,k) \in$ paper_ids $\times$ track_ids x session_ids.**
+**$x_{p,j,k} \in \\\{0,1\\\}\quad \forall (p,j,k) \in$ paper_ids $\times$ track_ids $z$ session_ids.**
 
 The decision variable $x_{p,j,k}$ is used to model if a paper is allocated to a specific subsession (i.e. a session-track combination). Specifically, paper $p$ is allocated to session $j$ and track $k$ iff $x_{p,j,k}=1$. Note, that the final schedule is given by {$x_{p,j,k}: x_{p,j,k}=1$}.
 
