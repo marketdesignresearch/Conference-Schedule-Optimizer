@@ -41,10 +41,10 @@ In the following, we describe the QIP.
 | topic_cost      | Cost for a "topic"-bidder attending a subsession | 25 | int |
 | topic_utility      | Constant utility for a "topic"-bidder attending a subsession (constant analogue to U map) | 100 | int |
 |||||
-| U      | Bidders' utilities map U:** U(b,p) represents bidder b’s bid on paper p. | {(1,12): 23.45, (1,14):22.7, (7,4):9.3,...} | dict |
-| M      | Paper-author map M:** M(a,p)=1 iff author a is and author of paper p and author a has at least 2 papers (otherwise she can’t have a conflict with herself). | {(1,3): 1, (1,6):1, (3,4):1,...} | dict |
-| T      | Paper-session map T:** T(j,p)=1 iff paper p cannot be presented in session j | {(5,1): 1, (14,1):1, (7,2):1,...} | dict |
-| Q      | Paper-topic map Q:** Q(p,t)==1 iff paper p has topic t. | {(1,2): 1, (1,7):1, (26,4):1,...} | dict |
+| U      | Bidders' utilities map U: U(b,p) represents bidder b’s bid on paper p. | {(1,12): 23.45, (1,14):22.7, (7,4):9.3,...} | dict |
+| M      | Paper-author map M: M(a,p)=1 iff author a is and author of paper p and author a has at least 2 papers (otherwise she can’t have a conflict with herself). | {(1,3): 1, (1,6):1, (3,4):1,...} | dict |
+| T      | Paper-session map T: T(j,p)=1 iff paper p cannot be presented in session j | {(5,1): 1, (14,1):1, (7,2):1,...} | dict |
+| Q      | Paper-topic map Q: Q(p,t)==1 iff paper p has topic t. | {(1,2): 1, (1,7):1, (26,4):1,...} | dict |
 |||||
 | paper_title_dict      | Mapping between paperID and title of the paper | {1: 'Paper Title 1', 2: 'Paper Title 2', 3: 'Paper Title3',...} | dict |
 | paper_author_dict      | Mapping between paperID and all authors of the corresponding paper | {1: ['Author1','Author2'], 2: ['Author5'], 3:['Author2', 'Author4', 'Author8'] ,...} | dict(list) |
