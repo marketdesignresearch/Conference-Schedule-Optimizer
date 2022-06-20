@@ -559,14 +559,17 @@ class QIP:
 
     def _add_specific_paper_constraints(self):
         pass
-        # TOPIC SPECIFIC CONSTRAINTS
-        for j,k in self.session_track_tuple_ids:
-            self.QIP.add_constraint(ct=(self.x[(14, j, k)]==self.x[(20, j, k)]),
-                                    ctname=f'SPECIAL_CT_PAPERIDs_14-20-21-29_SESSION{j}_TRACK{k}')
-            self.QIP.add_constraint(ct=(self.x[(20, j, k)]==self.x[(21, j, k)]),
-                                    ctname=f'SPECIAL_CT_PAPERIDs_14-20-21-29_SESSION{j}_TRACK{k}')
-            self.QIP.add_constraint(ct=(self.x[(21, j, k)]==self.x[(29, j, k)]),
-                                    ctname=f'SPECIAL_CT_PAPERIDs_14-20-21-29_SESSION{j}_TRACK{k}')
+
+# =============================================================================
+#         # EXAMPLE PAPER SPECIFIC CONSTRAINTS for random data input
+#         for j,k in self.session_track_tuple_ids:
+#             self.QIP.add_constraint(ct=(self.x[(14, j, k)]==self.x[(20, j, k)]),
+#                                     ctname=f'SPECIAL_CT_PAPERIDs_14-20-21-29_SESSION{j}_TRACK{k}')
+#             self.QIP.add_constraint(ct=(self.x[(20, j, k)]==self.x[(21, j, k)]),
+#                                     ctname=f'SPECIAL_CT_PAPERIDs_14-20-21-29_SESSION{j}_TRACK{k}')
+#             self.QIP.add_constraint(ct=(self.x[(21, j, k)]==self.x[(29, j, k)]),
+#                                     ctname=f'SPECIAL_CT_PAPERIDs_14-20-21-29_SESSION{j}_TRACK{k}')
+# =============================================================================
 
 
 

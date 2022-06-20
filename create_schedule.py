@@ -15,16 +15,24 @@ from qip import QIP
 # %% Path
 save_data_path = os.path.join(os.getcwd(),'data_prepared')
 
-#
-create_random_instance(seed=1,save_data_path=save_data_path)
+#create_random_instance(seed=1,save_data_path=save_data_path)
 
-# %% Create Schedule
+# %%  Set Input Parameters
 
 track_session_capacity = 4
 paper_distribution = 'exact' # 'exact' or 'upper_bound'
 bidder_cost = 5
 topic_cost = 25
 topic_utility = 100
+
+# QIP parameters
+QIP_parameters = {'log_output': False,
+                  'time_limit': 60, # in seconds
+                  'mip_relative_gap': 0.01,
+                  'integrality_tol': None,
+                  'feasibility_tol': None,
+                  }
+# %% Load Data Input
 
 # U MAPPING: U(b,p)= scaled preference of bidder_id:b for paper_id:p
 U = pkl.load(open(os.path.join(save_data_path,'U.pkl'), 'rb'))
@@ -55,16 +63,9 @@ paper_author_dict = pkl.load(open(os.path.join(save_data_path,'paper_author_dict
 # paper_topic_dict
 paper_topic_dict = pkl.load(open(os.path.join(save_data_path,'paper_topic_dict.pkl'), 'rb'))
 
-# QIP parameters
-QIP_parameters = {'log_output': False,
-                  'time_limit': 60, # in seconds
-                  'mip_relative_gap': 0.01,
-                  'integrality_tol': None,
-                  'feasibility_tol': None,
-                  }
 # %% QIP
 
-#  BUILD QIP
+#  INSTNATIATE AND BUILD QIP
 QIP_instance = QIP(session_ids=session_ids,
                    track_ids=track_ids,
                    paper_ids=paper_ids,
@@ -90,7 +91,7 @@ QIP_instance.build()
 QIP_instance.solve()
 QIP_instance.summary()
 
-# TRANSFORM QIP_instance.schedule to nice format
+# TRANSFORM QIP_instance.schedule to nice format and create output folder
 QIP_instance.create_schedule(filename = 'schedule',
                              paper_author_dict = paper_author_dict,
                              paper_title_dict = paper_title_dict,
