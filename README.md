@@ -66,15 +66,15 @@ The decision variable $x_{p,j,k}$ is used to model if a paper is allocated to a 
 ### 3.2.2 Bidder Variables
 **$y_{b,j,k} \in \\\{0,1\\\}\quad \forall (b,j,k) \in bidder\\\_ids \times  session\\\_ids \times track\\\_ids$.**
 
-The decision variable $y_{b,j,k}$ is used to model if a bidder attends a specific subsession (i.e. a session-track tuple). Specifically, bidder $b$ attends session $j$ in track $k$ iff $y_{b,j,k}=1$. This decision variable is used  as an indication of audience interest, e.g., two papers with a high interest should not be presented simulatenously.
+The decision variable $y_{b,j,k}$ is used to model if a bidder attends a specific subsession (i.e. a session-track tuple). Specifically, bidder $b$ attends session $j$ in track $k$ iff $y_{b,j,k}=1$. This decision variable is used  as an indication of audience interest, e.g., two papers with a high interest should not be presented simultaneously.
 
 ### 3.2.3 Author Variables
 **$z_{a,j,k} \in \\\{0,1\\\}\quad \forall  (a,j,k) \in author\\\_ids \times  session\\\_ids \times track\\\_ids$.**
 
-The decision variable $z_{a,j,k}$ is used to model if a author presents her paper in a specific subsession (i.e. a session-track tuple). Specifically, author $a$ presents her paper in session $j$ and track $k$ iff $z_{a,j,k}=1$. This decision variable is used to handle author-specific constraints, e.g., an author of 2 papers cannot simulatenously present both papers.
+The decision variable $z_{a,j,k}$ is used to model if a author presents her paper in a specific subsession (i.e. a session-track tuple). Specifically, author $a$ presents her paper in session $j$ and track $k$ iff $z_{a,j,k}=1$. This decision variable is used to handle author-specific constraints, e.g., an author of 2 papers cannot simultaneously present both papers.
 
 ### 3.2.4 Topic Variables
-**$q_{a,j,k} \in  \\\{0,1\\\}\quad \forall (t,j,k) \in topic\\\_ids \times  session\\\_ids \times track\\\_ids$.**
+**$q_{t,j,k} \in  \\\{0,1\\\}\quad \forall (t,j,k) \in topic\\\_ids \times  session\\\_ids \times track\\\_ids$.**
 
 The decision variable $q_{t,j,k}$ is used to model if a topic is present in a specific subsession (i.e. a session-track tuple). Specifically, topic $t$ is present in session $j$ and track $k$ iff $q_{t,j,k}=1$. This decision variable is used to cluster papers with similar topics.
 
@@ -108,14 +108,14 @@ where the interpretation of each of the four objective terms is given as
 
 ##### Paper variables
 1. For all $p \in paper\\\_ids: \\\, \sum_{j \in session\\\_ids} \sum_{k \in track\\\_ids} x_{p,j,k} = 1\quad$ (*Each paper appears exactly once*)
-2. For all $j \in session\\\_ids$, for all $k \in track\\\_ids: \\\, \sum_{p \in paper\\\_ids}  x_{p,j,k} = track\\\_session\\\_capacity\quad$ (*Each Track has exactly* $track\\\_session\\\_capacity$ *papers*)
+2. For all $j \in session\\\_ids$, for all $k \in track\\\_ids: \\\, \sum_{p \in paper\\\_ids}  x_{p,j,k} = track\\\_session\\\_capacity\quad$ (*Each track has exactly* $track\\\_session\\\_capacity$ *papers*)
 3. For all $\\\{(j,p): T(j,p)==1\\\}$ and for all $k \in track\\\_ids: \\\, x_{p,j,k} = 0$ (*Time conflicts*)
 
 ##### Bidder variables
 4. For all $b \in bidder\\\_ids$ and for all  $j \in session\\\_ids: \\\, \sum_{k \in track\\\_ids}  y_{b,j,k} <= 1\quad$ (*A bidder cannot be in more than one track per session*)
 
 ##### Author variables
-5. For all $\\\{(a,p): M(a,p)==1\\\}$,  for all  $j \in session\\\_ids$ and for all $k \in track\\\_ids: \\\, z_{a,j,k} >= x_{p,j,k}\quad$ (*An author needs to attend a specific subsession (i.e., session-track tuple) if he paper is allocated to that subsession*)
+5. For all $\\\{(a,p): M(a,p)==1\\\}$,  for all  $j \in session\\\_ids$ and for all $k \in track\\\_ids: \\\, z_{a,j,k} >= x_{p,j,k}\quad$ (*An author needs to attend a specific subsession, i.e., session-track tuple, if her paper is allocated to that subsession*)
 6. For all $a \in author\\\_ids$ and for all $j \in session\\\_ids: \\\, \sum_{k \in track\\\_ids}  z_{a,j,k} <= 1\quad$ (*An author cannot be in more than one track per session*)
 
 
@@ -140,7 +140,7 @@ save_data_path = os.path.join(os.getcwd(),'data_prepared')
 #create_random_instance(seed=1,save_data_path=save_data_path)
 ```
 
-If you already created your data input (either real-world data or our random data input) then you can leave the line **create_random_instance(seed=1,save_data_path=save_data_path)** outcommented. Otherwise, if you want to create new random data input then you have to uncomment this line.
+If you already created your data input (either real-world data or our random data input) then you can leave the line **create_random_instance(seed=1,save_data_path=save_data_path)** commented. Otherwise, if you want to create new random data input then you have to uncomment this line.
 
 Next, set the input parameters:
 
@@ -262,7 +262,7 @@ Each output folder **QIP_RESULTS_<day_month_year>_<hh-mm-ss>** (of a successful 
 	
 ### Final Schedule as Excel File
 	
-The final schedule schedule_<day_month_year>_<hh-mm-ss>.xlsx contains for each session-track tuple $(k,j)\in session\\\_ids \times track\\\_ids$ (i.e., subsession) the following information: 
+The final schedule schedule_<day_month_year>_<hh-mm-ss>.xlsx contains for each session-track tuple $(j,k)\in session\\\_ids \times track\\\_ids$ (i.e. subsession) the following information: 
 	
 |        	|| $TRACK k$     |
 | -------------------------- |--------------------------|--------------------------|
@@ -289,7 +289,7 @@ def _add_specific_paper_constraints(self):
 	
 ```
 	
-The example above ensures that paper ids 14, 20, 21, and 29 are all alllocated to the same subsession (i.e., session-track tuple). You can use such paper specific constraints for example to make sure that papers with similar topics are allocated to the same subsession (i.e., session-track tuple). Note that for the random data input we used the above defined paper specific constraints (see e.g., schedule_17_06_2022_15-47-37.xlsx Session 1 Track 4).
+The example above ensures that paper ids 14, 20, 21, and 29 are all alllocated to the same subsession (i.e., session-track tuple). You can use such paper specific constraints for example to make sure that papers with similar topics are allocated to the same subsession (i.e., session-track tuple). Note that for the random data input we used the above defined paper specific constraints (see Session 1 Track 4 in schedule_17_06_2022_15-47-37.xlsx).
 	
 ## Contact
 Maintained by: Jakob Weissteiner (weissteiner)
