@@ -86,13 +86,13 @@ In this section, we present the QIP objective and its constraints.
 
 The QIP maximizes the following objective
 
-$$ \large \max_{x_{p,j,k},\\\,\\\, y_{b,j,k},\\\,\\\, z_{a,j,k},\\\,\\\, q_{t,j,k}} \quad \sum_{(b,p) : U(b,p)>0}\quad \sum_{j \in session\\\_ids}\quad\sum_{k \in track\\\_ids} x_{p,j,k} \cdot y_{b,j,k} \cdot U(b,p) \\\,- \quad (obj1)$$ 
+$$ \large \max_{x_{p,j,k},\\\,\\\, y_{b,j,k},\\\,\\\, z_{a,j,k},\\\,\\\, q_{t,j,k}} \quad \sum_{(b,p) : U(b,p)>0}\quad \sum_{j \in session\\\_ids}\quad\sum_{k \in track\\\_ids} x_{p,j,k} \cdot y_{b,j,k} \cdot U(b,p) \\\, \quad (obj1)$$ 
 
-$$ \large \hphantom{\max_{x_{p,j,k},\\\,\\\, y_{b,j,k},\\\,\\\, z_{a,j,k},\\\,\\\, q_{t,j,k}}} \sum_{b \in bidder\\\_ids}\quad\sum_{j \in session\\\_ids}\quad\sum_{k \in track\\\_ids} y_{b,j,k} \cdot bidder\\\_cost \\\,+ \quad (obj2)$$ 
+$$ \large \hphantom{\max_{x_{p,j,k},\\\,\\\, y_{b,j,k},\\\,\\\, z_{a,j,k},\\\,\\\, q_{t,j,k}}} -\sum_{b \in bidder\\\_ids}\quad\sum_{j \in session\\\_ids}\quad\sum_{k \in track\\\_ids} y_{b,j,k} \cdot bidder\\\_cost \\\, \quad (obj2)$$ 
 
-$$ \large \hphantom{aaaaaa\max_{x_{p,j,k},\\\,\\\, y_{b,j,k},\\\,\\\, z_{a,j,k},\\\,\\\, q_{t,j,k}}} \sum_{(t,p):Q(t,p)=1}\quad\sum_{j \in session\\\_ids}\quad\sum_{k \in track\\\_ids} x_{p,j,k} \cdot q_{t,j,k} \cdot topic\\\_utility \\\,- \quad (obj3)$$ 
+$$ \large \hphantom{aaaaaa\max_{x_{p,j,k},\\\,\\\, y_{b,j,k},\\\,\\\, z_{a,j,k},\\\,\\\, q_{t,j,k}}} +\sum_{(t,p):Q(t,p)=1}\quad\sum_{j \in session\\\_ids}\quad\sum_{k \in track\\\_ids} x_{p,j,k} \cdot q_{t,j,k} \cdot topic\\\_utility \\\, \quad (obj3)$$ 
 
-$$ \large \hphantom{\max_{x_{p,j,k},\\\,\\\, y_{b,j,k},\\\,\\\, z_{a,j,k}}} \sum_{t \in topic\\\_ids}\quad\sum_{j \in session\\\_ids}\quad\sum_{k \in track\\\_ids} q_{t,j,k} \cdot topic\\\_cost. \quad (obj4),$$ 
+$$ \large \hphantom{\max_{x_{p,j,k},\\\,\\\, y_{b,j,k},\\\,\\\, z_{a,j,k}}} -\sum_{t \in topic\\\_ids}\quad\sum_{j \in session\\\_ids}\quad\sum_{k \in track\\\_ids} q_{t,j,k} \cdot topic\\\_cost. \quad (obj4),$$ 
 
 where the interpretation of each of the four objective terms is given as
 
