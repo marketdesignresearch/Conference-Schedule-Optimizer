@@ -1,5 +1,5 @@
 # Conference-Schedule-Optimizer
-This software uses a Quadratic Integer Programming (QIP) formulation to produce an optimal conference schedule given reviewers' bidding preferences. The QIP formulation was derived by Jakob Weissteiner (University of Zurich), Sven Seuken (Univeristy of Zurich), and Ilya Segal (Stanford University). This software was used to create the official Conference schedule (150 papers) for the 23rd ACM Conference on Economics and Computation (EC'22).
+This software uses a Quadratic Integer Programming (QIP) formulation to produce an optimal conference schedule given reviewers' bidding preferences. The QIP formulation was derived by Jakob Weissteiner (University of Zurich), Sven Seuken (Univeristy of Zurich), and Ilya Segal (Stanford University). This software was used to create the [official Conference schedule](https://ec22.sigecom.org/program/main-program/) (150 papers) for the 23rd ACM Conference on Economics and Computation (EC'22).
 
 ## 1. Requirements
 
